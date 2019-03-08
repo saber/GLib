@@ -1,3 +1,21 @@
+/*
+ * File: eigen_plugins.h
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: Eigen 库的一些应用插件。
+ * License: see the LICENSE.txt file
+ * reference: 参考 mrpt 中的 eigen_plugins.h。做了一些改动。下面是 mrpt 库的 license:
+ */
+ /* +---------------------------------------------------------------------------+
+    |                     Mobile Robot Programming Toolkit (MRPT)               |
+    |                          http://www.mrpt.org/                             |
+    |                                                                           |
+    | Copyright (c) 2005-2017, Individual contributors, see AUTHORS file        |
+    | See: http://www.mrpt.org/Authors - All rights reserved.                   |
+    | Released under BSD License. See details in http://www.mrpt.org/License    |
+    +---------------------------------------------------------------------------+ */
+
 #ifndef GLIB_EIGEN_PLUGINS_H
 #define GLIB_EIGEN_PLUGINS_H
 

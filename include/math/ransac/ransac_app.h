@@ -1,7 +1,25 @@
+/*
+ * File: ransac_app.h
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: ransac app 库。可以在这里添加新的模型 ransac 接口
+ * License: see the LICENSE.txt file
+ * reference: 关于 3d 平面是参考 mrpt 修改版，下面是 mrpt 库的 license:
+ */
+ /* +---------------------------------------------------------------------------+
+    |                     Mobile Robot Programming Toolkit (MRPT)               |
+    |                          http://www.mrpt.org/                             |
+    |                                                                           |
+    | Copyright (c) 2005-2017, Individual contributors, see AUTHORS file        |
+    | See: http://www.mrpt.org/Authors - All rights reserved.                   |
+    | Released under BSD License. See details in http://www.mrpt.org/License    |
+    +---------------------------------------------------------------------------+ */
+
 #ifndef GLIB_RANSAC_APP_H
 #define GLIB_RANSAC_APP_H
 
-#include "ransac_models.h" // 可以进行 ransac 的模型,包含 3d 平面、2d 直线、单应矩阵、F 矩阵
+#include <ransac/ransac_models.h> // 可以进行 ransac 的模型,包含 3d 平面、2d 直线、单应矩阵、F 矩阵
 
 #include <utility> // std::pair
 #include <vector>

@@ -1,0 +1,35 @@
+####################################################
+# 使用变量:
+#   GLib_FOUND 是否找到该库
+#   GLib_INCLUDE_DIRS 头文件
+#   GLib_LIBS       库文件
+#   GLib_LIBRARIES 库文件
+# example:
+#         find_package(GLib)
+#         if(GLib_FOUND)  
+#           include_directories(GLib_INCLUDE_DIRS)
+#           target_link_libraries(${PROJECT_NAME} ${GLib_LIBS})
+#           target_link_libraries(${PROJECT_NAME} ${GLib_LIBRARIES})
+#         endif(GLib_FOUND)  
+####################################################
+# 查找 GLib 库，根据 CMakeLists.txt 中的安装路径 
+FIND_LIBRARY(GLib_LIBRARY GLib
+    PATHS  "@CMAKE_INSTALL_PREFIX@/lib"
+)
+
+FIND_PATH(GLib_INCLUDE_DIR GLibConfig.cmake
+    PATHS "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME@" 
+)
+
+# 这里包含的是安装目录下的头文件！
+LIST(APPEND GLib_INCLUDE_DIR
+  ${GLib_INCLUDE_DIR}/../ ${GLib_INCLUDE_DIR}/../utils/
+  ${GLib_INCLUDE_DIR}/../math/
+)
+
+SET(GLib_LIBRARIES ${GLib_LIBRARY})
+SET(GLib_LIBS ${GLib_LIBRARY})
+SET(GLib_INCLUDE_DIRS ${GLib_INCLUDE_DIR})
+IF(GLib_LIBRARIES AND GLib_INCLUDE_DIRS)
+  SET(GLib_FOUND TRUE)
+ENDIF()

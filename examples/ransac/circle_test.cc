@@ -1,7 +1,16 @@
-#include "ransac_app.h" // 使用 ransac 拟合圆形模型函数
+/*
+ * File: circle_test.cc
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: ransac 算法应用程序。
+ * License: see the LICENSE.txt file
+ */
+
+#include <ransac/ransac_app.h> // 使用 ransac 拟合圆形模型函数
 #include "Random.h"
 #include "eigen_plugins.h" // 修改动态矩阵
-#include "ransac_models.h" // 使用圆形模型
+#include <ransac/ransac_models.h> // 使用圆形模型
 
 #include <random> // 产生高斯噪声分布
 #include <pangolin/pangolin.h> // 基于 opengl 显示库

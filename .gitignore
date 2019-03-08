@@ -1,1 +1,18 @@
+# 忽略 TODO 文件
+TODO.md
+
+# 忽略编译目录
+_builds
+_build
 build
+# 忽略编译生成的 lib 及其文件夹
+lib
+
+# 忽略 examples 编译的文件 _builds or build or _build
+examples/ransac/*build*
+examples/ransac/circle_model_one.pcd
+examples/ransac/plane_model_one.pcd
+
+#忽略由于 atom 产生的 .gch文件
+include/*.gch
+src/*.gch

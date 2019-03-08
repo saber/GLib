@@ -1,5 +1,23 @@
-#include "ransac_app.h"
-#include "ransac.h"
+/*
+ * File: ransac_app.cc
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: ransac app 库。可以在这里添加新的模型 ransac 接口
+ * License: see the LICENSE.txt file
+ * reference: 关于 3d 平面是参考 mrpt 修改版，下面是 mrpt 库的 license:
+ */
+ /* +---------------------------------------------------------------------------+
+    |                     Mobile Robot Programming Toolkit (MRPT)               |
+    |                          http://www.mrpt.org/                             |
+    |                                                                           |
+    | Copyright (c) 2005-2017, Individual contributors, see AUTHORS file        |
+    | See: http://www.mrpt.org/Authors - All rights reserved.                   |
+    | Released under BSD License. See details in http://www.mrpt.org/License    |
+    +---------------------------------------------------------------------------+ */
+
+#include <ransac/ransac_app.h>
+#include <ransac/ransac.h>
 #include "eigen_plugins.h"
 
 #include <exception> // 提供异常 catch(exception &)
@@ -52,7 +70,7 @@ void Ransac_3DplaneDistanceFunc(
     const T                                distanceThreshold,
     unsigned int                           &out_bestModelIndice,
     vector<size_t>                         &out_inlierIndices) {
-    DLOG(INFO) << "Ransac_3DplaneDistanceFunc(...)";
+    DLOG(INFO) << "Ransac_3DplaneDistanceFunc()";
     CHECK(testModels.size() == 1) << "3D 平面拟合不符合条件(仅仅假定一个模型!)";
     out_bestModelIndice = 0;
     const Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> &M = testModels[0];
@@ -81,7 +99,7 @@ template <typename T>
 bool Ransac_3DDegenerateFunc(
     const Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>  &allData,
     const vector<size_t>                                    &useIndices) {
-    DLOG(INFO) << "Ransac_3DDegenerateFunc(...)";
+    DLOG(INFO) << "Ransac_3DDegenerateFunc()";
     CHECK(useIndices.size() == 3) << "最小随机样本数量不符合 3D 平面要求 3 个";
 
     // 获取 3 个点
@@ -128,7 +146,7 @@ void glib::RansacDetect3DPlane(
     vector<pair<vector<size_t>, T3Dplane> >                &out_detectedPlanes, // 换成内点索引
     const double                                           threshold,
     const size_t                                           minInliersForValidPlane) {
-    DLOG(INFO) << "RansacDetect3Dplane(...) start";
+    DLOG(INFO) << "RansacDetect3Dplane() start";
     if (data.size() == 0)
         return ;
     out_detectedPlanes.clear();
@@ -196,7 +214,7 @@ void Ransac_CircleFitFunc(
     vector<Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> > &fitModels) {
     CHECK(allData.rows() == 2) << "给定数据点集必须是二维!";
     CHECK(useIndices.size() == 3) << "给定数据点个数必须是 3";
-    DLOG(INFO) << "Ransac_CircleFitFunc(...)";
+    DLOG(INFO) << "Ransac_CircleFitFunc()";
 
     fitModels.resize(1);
     Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> &model = fitModels[0]; // 圆有 3 个系数
@@ -227,7 +245,7 @@ void Ransac_CircleDistanceFunc(
     vector<size_t>                               &out_inlierIndices) {
     CHECK(allData.rows() == 2) << "给定数据点的维度必须是 2 维!";
     CHECK(testModels.size() == 1) << "拟合圆模型时仅仅一个模型";
-    DLOG(INFO) << "Ransac_CircleFitFunc(...)";
+    DLOG(INFO) << "Ransac_CircleFitFunc()";
 
     const Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>  &model = testModels[0]; // 保证 1x3
     CHECK(model.rows() == 1 && model.cols() == 3) << "不符合圆形模型";
@@ -257,7 +275,7 @@ bool Ransac_CircleDegenerateFunc(
     const vector<size_t>                                     &useIndices) {
     CHECK(allData.rows() == 2) << "给定数据点的维度必须是 2 维!";
     CHECK(useIndices.size() == 3) << "符合圆模型的数据点个数必须是 3!";
-    DLOG(INFO) << "Ransac_CircleDegenerateFunc(...)";
+    DLOG(INFO) << "Ransac_CircleDegenerateFunc()";
 
     Eigen::Vector2d p1(double (allData(0, useIndices[0])), double(allData(1, useIndices[0])));
     Eigen::Vector2d p2(double (allData(0, useIndices[1])), double(allData(1, useIndices[1])));
@@ -302,7 +320,7 @@ void glib::RansacDetectCircle(
     const double                               threshold,
     const size_t                               minInliersForValidCircle) {
     CHECK(data.rows() == 2) << "数据点维度是 2!";
-    DLOG(INFO) << "RansacDetectCircle(...) start";
+    DLOG(INFO) << "RansacDetectCircle() start";
 
     vector<size_t> this_best_inliers;
     RANSAC_Template<NUMTYPE> ransac;
@@ -321,7 +339,7 @@ void glib::RansacDetectCircle(
                             this_best_inliers,
                             this_best_model,
                             0.999,
-                            2000
+                            200
                             );
         if (this_best_inliers.size() > minInliersForValidCircle) {
             DLOG(INFO) << "内点个数：符合要求" << this_best_inliers.size();
@@ -338,7 +356,7 @@ void glib::RansacDetectCircle(
             break;
         }
     }
-    DLOG(INFO) << "RansacDetectCircle(...) end";
+    DLOG(INFO) << "RansacDetectCircle() end";
 }
 
 // 模板实例化---定义

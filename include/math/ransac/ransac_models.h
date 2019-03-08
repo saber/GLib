@@ -1,3 +1,12 @@
+/*
+ * File: ransac_models.h
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: ransac 模型定义。
+ * License: see the LICENSE.txt file
+ */
+
 #ifndef GLIB_RANSAC_MODELS_H
 #define GLIB_RANSAC_MODELS_H
 
@@ -8,7 +17,6 @@
 #include <Eigen/Core>
 #include <Eigen/Geometry> // 调用向量叉积 cross 函数
 
-//! \brief 将要拟合的模型。包括 3d 平面、2d 圆模型
 namespace glib {
 using std::vector;
 using std::cout;

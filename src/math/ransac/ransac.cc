@@ -1,5 +1,22 @@
+/*
+ * File: ransac.cc
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: ransac 实现的基本框架。
+ * License: see the LICENSE.txt file
+ * reference:  mrpt 相应文件的修改版，下面是 mrpt 库的 license:
+ */
+ /* +---------------------------------------------------------------------------+
+    |                     Mobile Robot Programming Toolkit (MRPT)               |
+    |                          http://www.mrpt.org/                             |
+    |                                                                           |
+    | Copyright (c) 2005-2017, Individual contributors, see AUTHORS file        |
+    | See: http://www.mrpt.org/Authors - All rights reserved.                   |
+    | Released under BSD License. See details in http://www.mrpt.org/License    |
+    +---------------------------------------------------------------------------+ */
 
-#include "ransac.h"
+#include <ransac/ransac.h>
 #include "format.h"
 #include "Random.h"
 
@@ -57,7 +74,6 @@ bool RANSAC_Template<NUMTYPE>::ExecuteRansac(
         vector<Eigen::Matrix<NUMTYPE, Eigen::Dynamic, Eigen::Dynamic> > models; // 数据拟合出来的模型
 
         while (isDegenerate) {
-
             // 随机选择 s 个数据样本 samples 使用之前需要 resize() 调整到指定随机样本大小
             Random::RandomVector(samples, 0, dataPointsNum-1);
 
@@ -69,7 +85,6 @@ bool RANSAC_Template<NUMTYPE>::ExecuteRansac(
 
             if (++degenerate_trial > maxDegenerateTrials) {
                 LOG(WARNING) << "不能选择一个非退化的随机样本！";
-                //cout << "不能选择一个非退化的随机样本！" << endl;
                 break;
             }
         } // end while(isDegenerate)

@@ -1,7 +1,15 @@
-#include "ransac_app.h"
+/*
+ * File: plane_test.cc
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: ransac 算法应用程序。
+ * License: see the LICENSE.txt file
+ */
+#include <ransac/ransac_app.h>
 #include "Random.h" // 使用 rnadom
 #include "eigen_plugins.h" // 修改动态矩阵
-#include "ransac_models.h"
+#include <ransac/ransac_models.h>
 
 #include <pangolin/pangolin.h> // 基于 opengl 显示库
 #include <pcl/point_types.h>

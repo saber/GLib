@@ -1,3 +1,12 @@
+/*
+ * File: format.h
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: 格式化输出文件
+ * License: see the LICENSE.txt file
+ */
+
 #ifndef GLIB_FORMAT_H_
 #define GLIB_FORMAT_H_
 

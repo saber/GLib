@@ -1,17 +1,15 @@
 /*
-*This file is part of GLib.
-*This file is a modified version of DLib/include/Random.h, see FreeBSD license below.
-*/
-
-/*
- * File: Random.cpp
- * Project: DUtils library
- * Author: Dorian Galvez-Lopez
- * Date: April 2010
- * Description: manages pseudo-random numbers
+ * File: Random.cc
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: 常用随机数。
  * License: see the LICENSE.txt file
- *
+ * reference: 修改版本的 DLib 库的 Random.cc。下面是 DLib 库的 license:
  */
+/*DLib. Copyright (c) 2015 Dorian Galvez-Lopez. http://doriangalvez.com
+  All rights reserved.
+*/
 
 #include "Random.h"
 

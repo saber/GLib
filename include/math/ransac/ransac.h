@@ -1,3 +1,21 @@
+/*
+ * File: ransac.h
+ * Project: GLib library
+ * Author: gcj
+ * Date: 2019/3/8
+ * Description: ransac 实现的基本框架。
+ * License: see the LICENSE.txt file
+ * reference:  mrpt 相应文件的修改版，下面是 mrpt 库的 license:
+ */
+ /* +---------------------------------------------------------------------------+
+    |                     Mobile Robot Programming Toolkit (MRPT)               |
+    |                          http://www.mrpt.org/                             |
+    |                                                                           |
+    | Copyright (c) 2005-2017, Individual contributors, see AUTHORS file        |
+    | See: http://www.mrpt.org/Authors - All rights reserved.                   |
+    | Released under BSD License. See details in http://www.mrpt.org/License    |
+    +---------------------------------------------------------------------------+ */
+
 #ifndef GLIB_RANSAC_H
 #define GLIB_RANSAC_H
 
